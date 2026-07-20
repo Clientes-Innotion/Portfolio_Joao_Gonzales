@@ -28,16 +28,193 @@
         html {
             scroll-behavior: smooth;
         }
+
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        section {
+            scroll-margin-top: 88px;
+        }
+
+        .video-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            border: 1px solid rgb(193 242 119 / 0.16);
+            background: rgb(13 38 31 / 0.72);
+            box-shadow: 0 18px 45px rgb(0 0 0 / 0.28);
+            isolation: isolate;
+        }
+
+        .video-card img {
+            transition: transform 450ms ease, filter 450ms ease;
+        }
+
+        .video-card:hover img {
+            transform: scale(1.05);
+            filter: saturate(1.08) contrast(1.05);
+        }
+
+        .video-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 35%, rgb(13 38 31 / 0.72));
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .watch-pill {
+            position: relative;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #7FF20C, #C1F277);
+            color: #06110e;
+            font-weight: 700;
+            box-shadow: 0 10px 28px rgb(127 242 12 / 0.24);
+        }
+
+        .watch-pill::before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 9px solid currentColor;
+        }
+
+        section[id="portfolio"],
+        #vlogs,
+        #reels-real-time,
+        #animacoes,
+        #outback {
+            padding-top: 4.5rem;
+            padding-bottom: 4.5rem;
+        }
+
+        section[id="portfolio"] h3,
+        #vlogs h3,
+        #reels-real-time h3,
+        #animacoes h3,
+        #outback h3 {
+            margin-bottom: 2.25rem;
+            line-height: 1.1;
+        }
+
+        section[id="portfolio"] h3::after,
+        #vlogs h3::after,
+        #reels-real-time h3::after,
+        #animacoes h3::after,
+        #outback h3::after {
+            content: "";
+            display: block;
+            width: 4.5rem;
+            height: 3px;
+            margin: 1rem auto 0;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #7FF20C, #60BFA4);
+        }
+
+        section[id="portfolio"] .grid,
+        #vlogs .grid,
+        #reels-real-time .grid,
+        #animacoes .grid,
+        #outback .grid {
+            gap: 1.25rem;
+        }
+
+        section[id="portfolio"] .grid>div[onclick],
+        #vlogs .grid>div[onclick],
+        #reels-real-time .grid>div[onclick],
+        #animacoes .grid>div[onclick],
+        #outback .grid>div[onclick] {
+            border: 1px solid rgb(193 242 119 / 0.14);
+            background: rgb(13 38 31 / 0.66);
+            border-radius: 0.5rem;
+            box-shadow: 0 18px 45px rgb(0 0 0 / 0.24);
+            transition: transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
+        }
+
+        section[id="portfolio"] .grid>div[onclick]:hover,
+        #vlogs .grid>div[onclick]:hover,
+        #reels-real-time .grid>div[onclick]:hover,
+        #animacoes .grid>div[onclick]:hover,
+        #outback .grid>div[onclick]:hover {
+            transform: translateY(-4px);
+            border-color: rgb(127 242 12 / 0.45);
+            box-shadow: 0 24px 60px rgb(0 0 0 / 0.32);
+        }
+
+        section[id="portfolio"] .grid>div[onclick]:focus-visible,
+        #vlogs .grid>div[onclick]:focus-visible,
+        #reels-real-time .grid>div[onclick]:focus-visible,
+        #animacoes .grid>div[onclick]:focus-visible,
+        #outback .grid>div[onclick]:focus-visible {
+            outline: 2px solid #7FF20C;
+            outline-offset: 4px;
+        }
+
+        section[id="portfolio"] .grid>div[onclick] img,
+        #vlogs .grid>div[onclick] img,
+        #reels-real-time .grid>div[onclick] img,
+        #animacoes .grid>div[onclick] img,
+        #outback .grid>div[onclick] img {
+            height: auto;
+            aspect-ratio: 16 / 9;
+            transition: transform 450ms ease, filter 450ms ease;
+        }
+
+        section[id="portfolio"] .grid>div[onclick]:hover img,
+        #vlogs .grid>div[onclick]:hover img,
+        #reels-real-time .grid>div[onclick]:hover img,
+        #animacoes .grid>div[onclick]:hover img,
+        #outback .grid>div[onclick]:hover img {
+            transform: scale(1.05);
+            filter: saturate(1.08) contrast(1.05);
+        }
+
+        @media (max-width: 767px) {
+            section[id="portfolio"],
+            #vlogs,
+            #reels-real-time,
+            #animacoes,
+            #outback {
+                padding-top: 3.75rem;
+                padding-bottom: 3.75rem;
+            }
+
+            section[id="portfolio"] .grid,
+            #vlogs .grid,
+            #reels-real-time .grid,
+            #animacoes .grid,
+            #outback .grid {
+                gap: 1rem;
+            }
+
+            section[id="portfolio"] .grid>div[onclick]>div,
+            #vlogs .grid>div[onclick]>div,
+            #reels-real-time .grid>div[onclick]>div,
+            #animacoes .grid>div[onclick]>div,
+            #outback .grid>div[onclick]>div {
+                opacity: 1;
+            }
+        }
+
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-dark via-primary to-dark text-white font-sans">
+<body class="bg-gradient-to-br from-dark via-primary to-dark text-white font-sans selection:bg-accent selection:text-black">
 
     <!-- NAVBAR -->
     <header id="navbar" class="fixed w-full z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center backdrop-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
 
-            <h1 class="text-lg font-semibold tracking-wide">João Gonzales</h1>
+            <a href="#inicio" class="text-base sm:text-lg font-semibold tracking-wide hover:text-accent transition">João Gonzales</a>
 
             <nav class="hidden md:flex gap-8 text-sm">
                 <a href="#inicio" class="hover:text-accent transition">Início</a>
@@ -47,7 +224,7 @@
             </nav>
 
             <a href="#contato"
-                class="bg-gradient-to-r from-accent to-light text-black px-5 py-2 rounded-full hover:scale-105 transition">
+                class="bg-gradient-to-r from-accent to-light text-black px-4 sm:px-5 py-2 rounded-full hover:scale-105 transition text-sm font-semibold shadow-lg shadow-accent/10">
                 Fale comigo
             </a>
 
@@ -55,31 +232,72 @@
     </header>
 
     <!-- HERO -->
-    <section id="inicio" class="h-screen relative flex items-center justify-center text-center">
+    <section id="inicio" class="min-h-screen relative overflow-hidden px-6 pt-28 pb-12 flex items-center">
 
-        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d"
-            class="absolute w-full h-full object-cover" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d" alt="" aria-hidden="true"
+            class="absolute w-full h-full object-cover" loading="eager" fetchpriority="high">
 
-        <div class="absolute inset-0 bg-gradient-to-br from-dark via-primary/80 to-secondary/30"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-dark via-primary/90 to-dark/80"></div>
+        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-dark to-transparent"></div>
 
-        <div class="z-10 max-w-2xl px-4">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-                Transformo ideias em vídeos que vendem
-            </h2>
+        <div class="relative z-10 max-w-7xl mx-auto w-full grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-14 items-center">
+            <div class="text-center lg:text-left">
+                <p class="text-accent font-semibold uppercase text-xs sm:text-sm tracking-[0.22em] mb-5">
+                    Editor de v&iacute;deo
+                </p>
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+                    Vídeos com ritmo, narrativa e acabamento de campanha
+                </h2>
 
-            <p class="text-gray-300 mb-8">
-                Edição estratégica com foco em retenção, estética e conversão.
-            </p>
+                <p class="text-gray-200 max-w-xl mx-auto lg:mx-0 mb-8 text-base sm:text-lg leading-relaxed">
+                    Edição estratégica para reels, vlogs, animações e marcas que precisam prender atenção sem perder identidade.
+                </p>
 
-            <a href="#portfolio"
-                class="bg-gradient-to-r from-accent to-light text-black px-6 py-3 rounded-full hover:scale-105 transition">
-                Ver trabalhos
-            </a>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                    <a href="#portfolio"
+                        class="bg-gradient-to-r from-accent to-light text-black px-6 py-3 rounded-full hover:scale-105 transition font-bold shadow-xl shadow-accent/15">
+                        Ver trabalhos
+                    </a>
+                    <a href="#contato"
+                        class="border border-light/30 bg-white/5 px-6 py-3 rounded-full hover:border-accent hover:bg-white/10 transition font-semibold">
+                        Pedir or&ccedil;amento
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-5">
+                <button type="button" onclick="openVideo('DNOy8cM939Y')"
+                    class="video-card group cursor-pointer text-left lg:translate-y-8">
+                    <img src="https://img.youtube.com/vi/DNOy8cM939Y/maxresdefault.jpg" alt="Reel narrativo"
+                        class="w-full aspect-[16/10] object-cover">
+                    <span class="watch-pill absolute left-3 bottom-3 sm:left-4 sm:bottom-4 px-3 sm:px-4 py-2 text-xs sm:text-sm">Reel narrativo</span>
+                </button>
+
+                <button type="button" onclick="openVideo('n2391NI3fEc')"
+                    class="video-card group cursor-pointer text-left">
+                    <img src="https://img.youtube.com/vi/n2391NI3fEc/maxresdefault.jpg" alt="Vlog"
+                        class="w-full aspect-[16/10] object-cover">
+                    <span class="watch-pill absolute left-3 bottom-3 sm:left-4 sm:bottom-4 px-3 sm:px-4 py-2 text-xs sm:text-sm">Vlog</span>
+                </button>
+
+                <button type="button" onclick="openVideo('sxS3_tY4VwA')"
+                    class="video-card group cursor-pointer text-left">
+                    <img src="https://img.youtube.com/vi/sxS3_tY4VwA/maxresdefault.jpg" alt="Reel Real Time"
+                        class="w-full aspect-[16/10] object-cover">
+                    <span class="watch-pill absolute left-3 bottom-3 sm:left-4 sm:bottom-4 px-3 sm:px-4 py-2 text-xs sm:text-sm">Real Time</span>
+                </button>
+
+                <a href="#portfolio"
+                    class="aspect-[16/10] rounded-lg border border-light/20 bg-dark/70 p-4 sm:p-5 flex flex-col justify-end hover:border-accent hover:bg-primary/60 transition">
+                    <span class="text-2xl sm:text-3xl font-bold text-accent">15+</span>
+                    <span class="text-xs sm:text-sm text-gray-200 mt-1">trabalhos para assistir</span>
+                </a>
+            </div>
         </div>
 
     </section>
 
-    <section id="sobre" class="py-24 px-6 bg-gradient-to-b from-transparent via-primary/20 to-transparent">
+    <section id="sobre" class="py-20 md:py-24 px-6 bg-gradient-to-b from-dark via-primary/20 to-dark">
 
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
@@ -126,6 +344,22 @@
     </section>
 
     <!-- PORTFÓLIO -->
+    <nav aria-label="Categorias do portfólio"
+        class="sticky top-[64px] z-30 border-y border-light/10 bg-dark/85 backdrop-blur supports-[backdrop-filter]:bg-dark/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex gap-2 overflow-x-auto text-sm">
+            <a href="#portfolio"
+                class="shrink-0 rounded-full border border-light/20 px-4 py-2 hover:border-accent hover:text-accent transition">Reels Narrativo</a>
+            <a href="#vlogs"
+                class="shrink-0 rounded-full border border-light/20 px-4 py-2 hover:border-accent hover:text-accent transition">Vlogs</a>
+            <a href="#reels-real-time"
+                class="shrink-0 rounded-full border border-light/20 px-4 py-2 hover:border-accent hover:text-accent transition">Reels Real Time</a>
+            <a href="#animacoes"
+                class="shrink-0 rounded-full border border-light/20 px-4 py-2 hover:border-accent hover:text-accent transition">Animações</a>
+            <a href="#outback"
+                class="shrink-0 rounded-full border border-light/20 px-4 py-2 hover:border-accent hover:text-accent transition">Outback Brasil</a>
+        </div>
+    </nav>
+
     <section id="portfolio"
         class="py-24 px-6 max-w-7xl mx-auto bg-gradient-to-b from-transparent via-secondary/10 to-transparent">
 
@@ -297,7 +531,7 @@
 
     </section>
 
-    <section id="portfolio"
+    <section id="animacoes"
         class="py-24 px-6 max-w-7xl mx-auto bg-gradient-to-b from-transparent via-secondary/10 to-transparent">
 
         <h3 class="text-3xl font-bold text-center mb-14">Animações</h3>
@@ -354,7 +588,7 @@
 
     </section>
 
-    <section id="portfolio"
+    <section id="outback"
         class="py-24 px-6 max-w-7xl mx-auto bg-gradient-to-b from-transparent via-secondary/10 to-transparent">
 
         <h3 class="text-3xl font-bold text-center mb-14">Outback Brasil</h3>
@@ -412,14 +646,14 @@
     </section>
 
     <!-- DIFERENCIAIS -->
-    <section class="py-24 px-6 bg-gradient-to-r from-primary via-secondary/40 to-dark">
+    <section class="py-20 md:py-24 px-6 bg-gradient-to-r from-primary via-secondary/40 to-dark">
 
         <h3 class="text-3xl font-bold text-center mb-16">Diferenciais</h3>
 
-        <div class="grid md:grid-cols-4 gap-10 max-w-6xl mx-auto text-center">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto text-center">
 
             <!-- ITEM -->
-            <div class="flex flex-col items-center gap-4 group">
+            <div class="flex flex-col items-center gap-4 group rounded-lg border border-light/10 bg-dark/30 p-6">
                 <div
                     class="p-4 rounded-full bg-gradient-to-br from-accent/30 to-transparent group-hover:scale-110 transition">
 
@@ -434,7 +668,7 @@
                 <p>Edição profissional</p>
             </div>
 
-            <div class="flex flex-col items-center gap-4 group">
+            <div class="flex flex-col items-center gap-4 group rounded-lg border border-light/10 bg-dark/30 p-6">
                 <div class="p-4 rounded-full bg-gradient-to-br from-accent/30 to-transparent">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -445,7 +679,7 @@
                 <p>Entrega rápida</p>
             </div>
 
-            <div class="flex flex-col items-center gap-4 group">
+            <div class="flex flex-col items-center gap-4 group rounded-lg border border-light/10 bg-dark/30 p-6">
                 <div class="p-4 rounded-full bg-gradient-to-br from-accent/30 to-transparent">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -456,7 +690,7 @@
                 <p>Foco em resultado</p>
             </div>
 
-            <div class="flex flex-col items-center gap-4 group">
+            <div class="flex flex-col items-center gap-4 group rounded-lg border border-light/10 bg-dark/30 p-6">
                 <div class="p-4 rounded-full bg-gradient-to-br from-accent/30 to-transparent">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -473,23 +707,24 @@
 
     <!-- CONTATO -->
     <section id="contato"
-        class="py-24 px-6 max-w-3xl mx-auto text-center bg-gradient-to-b from-transparent via-primary/20 to-transparent">
+        class="py-20 md:py-24 px-6 max-w-3xl mx-auto text-center bg-gradient-to-b from-transparent via-primary/20 to-transparent">
 
         <h3 class="text-3xl font-bold mb-10">Contato</h3>
 
-        <form action="https://formspree.io/f/mlgapwgz" method="POST" class="flex flex-col gap-4">
+        <form action="https://formspree.io/f/mlgapwgz" method="POST"
+            class="flex flex-col gap-4 rounded-lg border border-light/15 bg-dark/55 p-4 sm:p-6 shadow-2xl shadow-black/20">
 
             <input type="text" name="nome" placeholder="Nome" required
-                class="p-3 rounded bg-gray-800 border border-gray-700 focus:border-accent outline-none">
+                class="p-3 rounded-lg bg-black/25 border border-light/15 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition">
 
             <input type="email" name="email" placeholder="Email" required
-                class="p-3 rounded bg-gray-800 border border-gray-700 focus:border-accent outline-none">
+                class="p-3 rounded-lg bg-black/25 border border-light/15 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition">
 
             <textarea name="mensagem" placeholder="Mensagem" required
-                class="p-3 rounded bg-gray-800 border border-gray-700 focus:border-accent outline-none"></textarea>
+                class="min-h-36 p-3 rounded-lg bg-black/25 border border-light/15 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition resize-y"></textarea>
 
             <button type="submit"
-                class="bg-gradient-to-r from-accent to-light text-black py-3 rounded hover:scale-105 transition">
+                class="bg-gradient-to-r from-accent to-light text-black py-3 rounded-full hover:scale-[1.02] transition font-bold shadow-lg shadow-accent/10">
                 Enviar mensagem
             </button>
 
@@ -502,19 +737,19 @@
         <p>© 2026 João Gonzales. Todos os direitos reservados.</p>
     </footer>
 
-    <div id="videoModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+    <div id="videoModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
 
-        <div class="relative w-full max-w-4xl px-4">
+        <div class="relative w-full max-w-5xl">
 
             <!-- BOTÃO FECHAR -->
-            <button onclick="closeVideo()" class="absolute -top-10 right-4 text-white text-2xl">
-                ×
+            <button onclick="closeVideo()" class="absolute -top-12 right-0 h-10 w-10 rounded-full border border-white/20 bg-white/10 text-white text-2xl leading-none hover:bg-white/20 transition">
+                &times;
             </button>
 
             <!-- VIDEO -->
-            <div class="aspect-video">
-                <iframe id="videoFrame" class="w-full h-full rounded-xl" src="" frameborder="0"
-                    allow="autoplay; encrypted-media" allowfullscreen>
+            <div class="aspect-video rounded-lg overflow-hidden border border-light/20 bg-black shadow-2xl">
+                <iframe id="videoFrame" class="w-full h-full" src="" frameborder="0"
+                    allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen>
                 </iframe>
             </div>
 
@@ -541,6 +776,7 @@
             iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
             modal.classList.remove("hidden");
             modal.classList.add("flex");
+            document.body.classList.add("overflow-hidden");
         }
 
         function closeVideo() {
@@ -550,6 +786,7 @@
             iframe.src = "";
             modal.classList.add("hidden");
             modal.classList.remove("flex");
+            document.body.classList.remove("overflow-hidden");
         }
 
         // fechar clicando fora
@@ -557,6 +794,23 @@
             if (e.target === this) {
                 closeVideo();
             }
+        });
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                closeVideo();
+            }
+        });
+
+        document.querySelectorAll("div[onclick^='openVideo']").forEach(function (card) {
+            card.setAttribute("role", "button");
+            card.setAttribute("tabindex", "0");
+            card.addEventListener("keydown", function (e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
         });
     </script>
 
